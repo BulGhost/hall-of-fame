@@ -2,6 +2,6 @@
 
 namespace HallOfFame.Domain.Repositories;
 
-internal interface IPersonRepo : IRepository<Person>
+public interface IPersonRepo : IRepository<Person>
 {
 }

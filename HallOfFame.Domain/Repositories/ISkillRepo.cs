@@ -2,6 +2,6 @@
 
 namespace HallOfFame.Domain.Repositories;
 
-internal interface ISkillRepo : IRepository<Skill>
+public interface ISkillRepo : IRepository<Skill>
 {
 }
