@@ -5,14 +5,13 @@ namespace HallOfFame.BusinessLogic.Common.Mappings;
 
 public class AssemblyMappingProfile : Profile
 {
-    public AssemblyMappingProfile()
+    public AssemblyMappingProfile(Assembly assembly)
     {
-        ApplyMappingFromAssembly();
+        ApplyMappingFromAssembly(assembly);
     }
 
-    private void ApplyMappingFromAssembly()
+    private void ApplyMappingFromAssembly(Assembly assembly)
     {
-        var assembly = Assembly.GetExecutingAssembly();
         var mappableTypes = assembly.GetExportedTypes()
             .Where(type => typeof(IMappable).IsAssignableFrom(type) && !type.IsInterface)
             .ToList();

@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using FluentValidation;
 using HallOfFame.BusinessLogic.Common.Behaviors;
+using HallOfFame.BusinessLogic.Common.Mappings;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,7 +16,8 @@ namespace HallOfFame.BusinessLogic
             ValidatorOptions.Global.LanguageManager.Enabled = false;
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(config =>
+                config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly())));
 
             return services;
         }
