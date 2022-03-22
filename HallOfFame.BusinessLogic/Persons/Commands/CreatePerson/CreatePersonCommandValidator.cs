@@ -2,7 +2,7 @@
 using HallOfFame.BusinessLogic.Common.Validators;
 using HallOfFame.Domain.Entities;
 
-namespace HallOfFame.BusinessLogic.Person.Commands.CreatePerson;
+namespace HallOfFame.BusinessLogic.Persons.Commands.CreatePerson;
 
 public class CreatePersonCommandValidator : AbstractValidator<CreatePersonCommand>
 {

@@ -126,6 +126,9 @@
   <data name="NameNotSpecified" xml:space="preserve">
     <value>Person's name is not specified</value>
   </data>
+  <data name="PersonDoesNotExist" xml:space="preserve">
+    <value>Person with the specified id doesn't exist</value>
+  </data>
   <data name="SkillLevelOutOfRange" xml:space="preserve">
     <value>The skill level must be in the range of 1 to 10</value>
   </data>

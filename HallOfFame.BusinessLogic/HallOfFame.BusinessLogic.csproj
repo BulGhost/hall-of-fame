@@ -7,10 +7,6 @@
 
   <ItemGroup>
     <Folder Include="Common\DataTransferObjects\" />
-    <Folder Include="Person\Commands\DeletePerson\" />
-    <Folder Include="Person\Commands\UpdatePerson\" />
-    <Folder Include="Person\Queries\GetAllPersons\" />
-    <Folder Include="Person\Queries\GetPersonById\" />
   </ItemGroup>
 
   <ItemGroup>

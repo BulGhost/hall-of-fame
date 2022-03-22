@@ -88,6 +88,15 @@ namespace HallOfFame.BusinessLogic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Person with the specified id doesn&apos;t exist.
+        /// </summary>
+        public static string PersonDoesNotExist {
+            get {
+                return ResourceManager.GetString("PersonDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The skill level must be in the range of 1 to 10.
         /// </summary>
         public static string SkillLevelOutOfRange {
