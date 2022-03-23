@@ -1,7 +1,9 @@
 using HallOfFame.BusinessLogic;
+using HallOfFame.BusinessLogic.Common;
 using HallOfFame.DataAccess;
 using HallOfFame.DataAccess.DbContext;
 using HallOfFame.DataAccess.Initialization;
+using HallOfFame.DataAccess.Models;
 using HallOfFame.WebApi;
 using HallOfFame.WebApi.Middlewares;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +25,7 @@ try
     string connection = builder.Configuration.GetConnectionString("DefaultConnection");
     builder.Services.AddDataAccess(connection);
     builder.Services.AddTransient<ExceptionHandlingMiddleware>();
+    builder.Services.AddAutoMapper(typeof(BusinessLogicMappingProfile), typeof(DataAccessMappingProfile));
 
     builder.Services.AddCors(options =>
         options.AddPolicy("CorsPolicy", policyBuilder => policyBuilder
@@ -76,8 +79,8 @@ try
     app.UseRouting();
     app.UseCors("CorsPolicy");
     app.UseApiVersioning();
-    app.UseEndpoints(endpoints => endpoints.MapControllers());
-    //app.MapControllers();
+    //app.UseEndpoints(endpoints => endpoints.MapControllers());
+    app.MapControllers();
 
     if (app.Environment.IsDevelopment())
     {
