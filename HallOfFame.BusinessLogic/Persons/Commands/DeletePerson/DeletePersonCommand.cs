@@ -2,4 +2,4 @@
 
 namespace HallOfFame.BusinessLogic.Persons.Commands.DeletePerson;
 
-public record DeletePersonCommand(long PersonId) : IRequest<long>;
+public record DeletePersonCommand(long PersonId) : IRequest;

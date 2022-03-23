@@ -5,7 +5,7 @@ using MediatR;
 
 namespace HallOfFame.BusinessLogic.Persons.Commands.UpdatePerson;
 
-public class UpdatePersonCommandHandler : IRequestHandler<UpdatePersonCommand, long>
+public class UpdatePersonCommandHandler : IRequestHandler<UpdatePersonCommand>
 {
     private readonly IPersonRepo _repo;
     private readonly IMapper _mapper;
@@ -16,10 +16,10 @@ public class UpdatePersonCommandHandler : IRequestHandler<UpdatePersonCommand, l
         _mapper = mapper;
     }
 
-    public async Task<long> Handle(UpdatePersonCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(UpdatePersonCommand request, CancellationToken cancellationToken)
     {
         var person = _mapper.Map<Person>(request);
         await _repo.UpdateAsync(person, cancellationToken);
-        return person.Id;
+        return Unit.Value;
     }
 }
