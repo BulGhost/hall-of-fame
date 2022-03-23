@@ -73,8 +73,7 @@ public class PersonController : ControllerBase
     ///     {
     ///         "name": "Kristopher Black",
     ///         "displayName": "K_Black",
-    ///         "skills":
-    ///         [
+    ///         "skills": [
     ///             {
     ///                 "name": "C#",
     ///                 "level": 8
@@ -113,8 +112,7 @@ public class PersonController : ControllerBase
     ///     {
     ///         "name": "Kristopher White",
     ///         "displayName": "K_White",
-    ///         "skills":
-    ///         [
+    ///         "skills": [
     ///             {
     ///                 "name": "C#",
     ///                 "level": 9

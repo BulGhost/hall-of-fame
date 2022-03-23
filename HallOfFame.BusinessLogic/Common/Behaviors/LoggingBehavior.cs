@@ -9,7 +9,7 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
 {
     private readonly ILogger _logger;
 
-    public LoggingBehavior(ILogger logger)
+    public LoggingBehavior(ILogger<LoggingBehavior<TRequest, TResponse>> logger)
     {
         _logger = logger;
     }
