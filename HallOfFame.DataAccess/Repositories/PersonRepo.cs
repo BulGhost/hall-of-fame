@@ -30,6 +30,14 @@ public class PersonRepo : IPersonRepo
         return await SaveAsync(cancellationToken);
     }
 
+    public async Task<long> CreateAsync(Person person, CancellationToken cancellationToken = default)
+    {
+        var personModel = _mapper.Map<Person, PersonModel>(person);
+        Persons.Add(personModel);
+        await SaveAsync(cancellationToken);
+        return personModel.Id;
+    }
+
     public async Task<int> UpdateAsync(Person person, CancellationToken cancellationToken = default)
     {
         var personModel = _mapper.Map<Person, PersonModel>(person);

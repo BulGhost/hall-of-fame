@@ -19,7 +19,6 @@ public class CreatePersonCommandHandler : IRequestHandler<CreatePersonCommand, l
     public async Task<long> Handle(CreatePersonCommand request, CancellationToken cancellationToken)
     {
         var person = _mapper.Map<Person>(request);
-        await _repo.AddAsync(person, cancellationToken);
-        return person.Id;
+        return await _repo.CreateAsync(person, cancellationToken);
     }
 }
