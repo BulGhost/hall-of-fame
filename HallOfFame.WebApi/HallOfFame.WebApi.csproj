@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Middlewares\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\HallOfFame.DataAccess\HallOfFame.DataAccess.csproj" />
   </ItemGroup>
 
