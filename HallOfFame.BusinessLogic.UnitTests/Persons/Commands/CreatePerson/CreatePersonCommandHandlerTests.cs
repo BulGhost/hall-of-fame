@@ -10,7 +10,7 @@ using HallOfFame.Domain.Entities;
 using HallOfFame.Domain.Repositories;
 using Xunit;
 
-namespace HallOfFame.BusinessLogic.UnitTests.Perons.Commands.CreatePerson;
+namespace HallOfFame.BusinessLogic.UnitTests.Persons.Commands.CreatePerson;
 
 public class CreatePersonCommandHandlerTests
 {
