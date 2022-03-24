@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace HallOfFame.WebApi;
+namespace HallOfFame.WebApi.HelperClasses;
 
 public static class DependencyInjection
 {

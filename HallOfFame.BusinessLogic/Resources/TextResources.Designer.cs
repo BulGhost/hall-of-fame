@@ -88,7 +88,16 @@ namespace HallOfFame.BusinessLogic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Person with the specified id doesn&apos;t exist.
+        ///   Looks up a localized string similar to 404.
+        /// </summary>
+        public static string NotFoundErrorCode {
+            get {
+                return ResourceManager.GetString("NotFoundErrorCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Person with the specified id doesn&apos;t found.
         /// </summary>
         public static string PersonDoesNotExist {
             get {

@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 using FluentValidation;
+using HallOfFame.BusinessLogic.Resources;
 using HallOfFame.Domain.Exceptions.Base;
 using HallOfFame.WebApi.ViewModels;
 
@@ -36,6 +37,12 @@ public sealed class ExceptionHandlingMiddleware : IMiddleware
 
         switch (exception)
         {
+            case ValidationException validationException
+                when validationException.Errors.First().ErrorCode == TextResources.NotFoundErrorCode:
+                code = HttpStatusCode.NotFound;
+                result.ErrorMessage = validationException.Errors.FirstOrDefault()?.ErrorMessage;
+                _logger.LogInformation("Not found(404). Error message: {0}", result.ErrorMessage);
+                break;
             case ValidationException validationException:
                 code = HttpStatusCode.BadRequest;
                 result.ErrorMessage = validationException.Errors.FirstOrDefault()?.ErrorMessage;

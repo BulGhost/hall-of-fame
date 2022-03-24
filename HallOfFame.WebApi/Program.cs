@@ -5,6 +5,7 @@ using HallOfFame.DataAccess.DbContext;
 using HallOfFame.DataAccess.Initialization;
 using HallOfFame.DataAccess.Models;
 using HallOfFame.WebApi;
+using HallOfFame.WebApi.HelperClasses;
 using HallOfFame.WebApi.Middlewares;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Options;

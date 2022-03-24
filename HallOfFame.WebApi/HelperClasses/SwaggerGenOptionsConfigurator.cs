@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace HallOfFame.WebApi;
+namespace HallOfFame.WebApi.HelperClasses;
 
 public class SwaggerGenOptionsConfigurator : IConfigureOptions<SwaggerGenOptions>
 {

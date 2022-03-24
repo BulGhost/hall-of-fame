@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using HallOfFame.BusinessLogic.Common.Validators;
+using HallOfFame.BusinessLogic.Resources;
 using HallOfFame.Domain.Entities;
 using HallOfFame.Domain.Repositories;
 
@@ -10,18 +11,19 @@ public class UpdatePersonCommandValidator : AbstractValidator<UpdatePersonComman
     public UpdatePersonCommandValidator(IPersonRepo repo)
     {
         RuleFor(cmd => cmd.Id).MustAsync(async (id, cancellationToken) =>
-        {
-            Person person = await repo.FindAsync(id, cancellationToken);
-            return person != null;
-        }).WithMessage(Resources.TextResources.PersonDoesNotExist);
+            {
+                Person person = await repo.FindAsync(id, cancellationToken);
+                return person != null;
+            }).WithErrorCode(TextResources.NotFoundErrorCode)
+            .WithMessage(TextResources.PersonDoesNotExist);
 
         RuleFor(cmd => cmd.Name).NotEmpty()
-            .WithMessage(Resources.TextResources.NameNotSpecified);
+            .WithMessage(TextResources.NameNotSpecified);
         RuleFor(cmd => cmd.DisplayName).NotEmpty()
-            .WithMessage(Resources.TextResources.DisplayNameNotSpecified);
+            .WithMessage(TextResources.DisplayNameNotSpecified);
         RuleForEach(cmd => cmd.Skills).SetValidator(new SkillValidator());
         RuleFor(cmd => cmd).Must(cmd => HasNoDuplicateSkills(cmd.Skills))
-            .WithMessage(Resources.TextResources.DuplicateSkills);
+            .WithMessage(TextResources.DuplicateSkills);
     }
 
     private bool HasNoDuplicateSkills(IEnumerable<Skill> skills)
