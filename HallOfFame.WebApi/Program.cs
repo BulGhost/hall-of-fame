@@ -6,7 +6,6 @@ using HallOfFame.DataAccess.Initialization;
 using HallOfFame.DataAccess.Models;
 using HallOfFame.WebApi;
 using HallOfFame.WebApi.Middlewares;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Options;
 using NLog;
@@ -26,33 +25,13 @@ try
     builder.Services.AddDataAccess(connection);
     builder.Services.AddTransient<ExceptionHandlingMiddleware>();
     builder.Services.AddAutoMapper(typeof(BusinessLogicMappingProfile), typeof(DataAccessMappingProfile));
-
-    builder.Services.AddCors(options =>
-        options.AddPolicy("CorsPolicy", policyBuilder => policyBuilder
-            .WithOrigins("https://localhost:5001")
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials()));
-
+    builder.Services.AddCorsPolicy();
     builder.Services.AddControllers();
     builder.Services.Configure<RouteOptions>(opt => opt.LowercaseUrls = true);
-
-    builder.Services.AddVersionedApiExplorer(opt =>
-    {
-        opt.GroupNameFormat = "'v'VVV";
-        opt.SubstituteApiVersionInUrl = true;
-    });
-
+    builder.Services.AddCustomApiVersioning();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerGenOptionsConfigurator>();
     builder.Services.AddSwaggerGen();
-
-    builder.Services.AddApiVersioning(opt =>
-    {
-        opt.AssumeDefaultVersionWhenUnspecified = true;
-        opt.DefaultApiVersion = new ApiVersion(1, 0);
-        opt.ReportApiVersions = true;
-    });
 
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
@@ -79,7 +58,6 @@ try
     app.UseRouting();
     app.UseCors("CorsPolicy");
     app.UseApiVersioning();
-    //app.UseEndpoints(endpoints => endpoints.MapControllers());
     app.MapControllers();
 
     if (app.Environment.IsDevelopment())
