@@ -4,7 +4,6 @@ using HallOfFame.DataAccess;
 using HallOfFame.DataAccess.DbContext;
 using HallOfFame.DataAccess.Initialization;
 using HallOfFame.DataAccess.Models;
-using HallOfFame.WebApi;
 using HallOfFame.WebApi.HelperClasses;
 using HallOfFame.WebApi.Middlewares;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -92,3 +91,5 @@ static async Task InitializeTestData(IServiceProvider serviceProvider, ILogger l
         logger.Fatal(ex, "An error occured while app initialization");
     }
 }
+
+public partial class Program { }
