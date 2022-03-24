@@ -49,8 +49,10 @@ public class PersonRepo : IPersonRepo
 
     public async Task<int> DeleteAsync(long id, CancellationToken cancellationToken = default)
     {
-        var personModel = new PersonModel { Id = id };
-        _context.Entry(personModel).State = EntityState.Deleted;
+        PersonModel personToDelete = Persons.FirstOrDefault(a => a.Id == id);
+        if (personToDelete == null) return 0;
+
+        Persons.Remove(personToDelete);
         return await SaveAsync(cancellationToken);
     }
 
