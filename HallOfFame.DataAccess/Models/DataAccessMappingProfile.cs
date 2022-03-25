@@ -15,5 +15,7 @@ public class DataAccessMappingProfile : Profile
         CreateMap<Skill, SkillModel>()
             .ForMember(nameof(SkillModel.PersonId), opt => opt.Ignore())
             .ReverseMap();
+
+        CreateMap<PersonModel, PersonModel>();
     }
 }

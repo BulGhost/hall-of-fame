@@ -68,7 +68,7 @@ public sealed class ExceptionHandlingMiddleware : IMiddleware
         }
 
         result.StatusCode = (int)code;
-        context.Response.ContentType = "application/json";
+        context.Response.ContentType = "application/json; charset=utf-8";
         context.Response.StatusCode = result.StatusCode;
 
         string response = JsonSerializer.Serialize(result, new JsonSerializerOptions(JsonSerializerDefaults.Web));

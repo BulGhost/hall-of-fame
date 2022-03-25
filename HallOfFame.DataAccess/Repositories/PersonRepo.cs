@@ -41,9 +41,9 @@ public class PersonRepo : IPersonRepo
     public async Task<int> UpdateAsync(Person person, CancellationToken cancellationToken = default)
     {
         var personModel = _mapper.Map<Person, PersonModel>(person);
-        PersonsSkills.RemoveRange(PersonsSkills.Where(s => s.PersonId == personModel.Id));
-        PersonsSkills.AddRange(personModel.Skills);
-        Persons.Update(personModel);
+        PersonModel personToUpdate = Persons.FirstOrDefault(p => p.Id == person.Id);
+        _mapper.Map(personModel, personToUpdate);
+
         return await SaveAsync(cancellationToken);
     }
 
